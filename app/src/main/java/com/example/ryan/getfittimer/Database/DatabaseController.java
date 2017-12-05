@@ -27,12 +27,12 @@ public class DatabaseController {
 
         db.beginTransaction();
         try {
-            //db.execSQL("DROP TABLE IF EXISTS " + "Workouts");
+            db.execSQL("DROP TABLE IF EXISTS " + "Workouts");
             db.execSQL("CREATE TABLE IF NOT EXISTS "
                     + "Workouts"
                     + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, warmup VARCHAR, interval VARCHAR, rest VARCHAR, rounds VARCHAR, cooldown VARCHAR);");
 
-            //db.execSQL("DROP TABLE IF EXISTS " + "Progress");
+            db.execSQL("DROP TABLE IF EXISTS " + "Progress");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS "
                     + "Progress"
