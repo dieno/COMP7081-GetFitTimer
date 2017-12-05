@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GetFitTimer</string>
+    <string name="filter_title_createtimer">Create Timer</string>
+</resources>
