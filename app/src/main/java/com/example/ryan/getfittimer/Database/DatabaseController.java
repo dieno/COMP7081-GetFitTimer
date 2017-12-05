@@ -170,6 +170,53 @@ public class DatabaseController {
     }
 
 
+    public Timer GetWorkout(String name) {
+        Cursor c = db.query("Workouts", null, null, null, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            for (int i = 0; i < c.getCount(); i++) {
+                int mNameColumn = c.getColumnIndex("name");
+
+                String mName = c.getString(mNameColumn); ;
+
+                if(mName.equals(name)) {
+                    int nameColumn = c.getColumnIndex("name");
+                    int warmupColumn = c.getColumnIndex("warmup");
+                    int intervalColumn = c.getColumnIndex("interval");
+                    int restColumn = c.getColumnIndex("rest");
+                    int roundsColumn = c.getColumnIndex("rounds");
+                    int cooldownColumn = c.getColumnIndex("cooldown");
+
+                    String xname = c.getString(nameColumn);
+                    String warmup = c.getString(warmupColumn);
+                    String interval = c.getString(intervalColumn);
+                    String rest = c.getString(restColumn);
+                    String rounds = c.getString(roundsColumn);
+                    String cooldown = c.getString(cooldownColumn);
+
+                    Timer workout = new Timer();
+                    workout.name = xname;
+                    workout.warmup = Integer.parseInt(warmup);
+                    workout.interval = Integer.parseInt(interval);
+                    workout.restPeriod = Integer.parseInt(rest);
+                    workout.rounds = Integer.parseInt(rounds);
+                    workout.cooldown = Integer.parseInt(cooldown);
+
+                    return workout;
+                }
+
+                c.moveToNext();
+            }
+            c.close();
+
+        }
+
+        return null;
+    }
+
+
 
     public String GetProgress() {
         Cursor c = db.rawQuery("SELECT * FROM Progress", null);
