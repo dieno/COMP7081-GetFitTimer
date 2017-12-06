@@ -70,7 +70,7 @@ public class cCheckProgressTest {
 
         ProgressActivity progressActivity = (ProgressActivity) getActivityInstance();
 
-        assertEquals(progressActivity.seconds, 5);
+        assertEquals(progressActivity.seconds, 4);
     }
 
     private Activity getActivityInstance(){
